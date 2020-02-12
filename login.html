@@ -1,0 +1,50 @@
+<html>
+    <script>
+        var data=[
+            {
+                username:'dian',
+                password:'rahasia'
+            },
+            {
+                username:'zie',
+                password:'secret'
+            }
+        ]
+        var ulang=true
+        while(ulang){
+            var menuutama=prompt('1. Login\n2. Register\n 3. Exit')
+            if(menuutama==1){
+                var taronama=prompt('masukan username')
+                var password=prompt('masukkan password')
+                var adadata=false
+                for(var i=0;i<data.length;i++){
+                    if(taronama==data[i].username&&password==data[i].password){
+                        adadata=true
+                    }
+                }
+                if(adadata){
+                    alert('berhasil login')
+                    ulang=false
+                }else{
+                    alert('data tidak ada, silahkan register')
+                }
+            }else if(menuutama==2){
+                do{
+
+                    var masukannama=prompt('masukan username untuk register')
+                    var masukanpassword=prompt('masukan password untuk register')
+                    var arrnew=data.filter((val)=>val.username===masukannama)
+                    if(arrnew.length>0){
+                        alert('username sudah ada, mohon register ulang')
+                    }else{
+                    data.push({username:masukannama,password:masukanpassword})
+                    alert('data berhasil di register')
+                    break
+                    }
+                }while(true);
+            }else{
+                alert('selamat tinggal')
+            }
+        }
+    </script>
+</html>

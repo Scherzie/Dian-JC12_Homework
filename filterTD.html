@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Filter TD</title>
+    <style>
+        table,td,th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+            table-layout: auto;
+        }
+        table{
+            text-align: center;   
+        }
+    </style> 
+</head>
+<body>
+    <fieldset>
+        <legend>Filter</legend>
+        <tr>
+            <td>
+                Nama : <input oninput="filterNama()" type="text" id="namaFilter" placeholder="Cari apa ya?" oninput="printData()"><br><br>
+                Harga : <input oninput="filterData()" type="number" id="hargaminFilter" placeholder="Harga Minimum" oninput="printData()">&nbsp;-
+                        <input oninput="filterData()" type="number" id="hargamaxFilter" placeholder="Harga Maksimum" oninput="printData()"><br><br>
+                Kategori : <select onchange="filterKategori()" id="kategoriFilter">
+                            <option hidden value="">All</option>
+                            <option value="cepatSaji">Cepat Saji</option>
+                            <option value="pakaian">Pakaian</option>
+                            <option value="elektronik">Elektronik</option>
+                            <option value="buah">Buah</option>
+                </select>
+                <br><br>
+            </td>
+        </tr>
+    </fieldset>
+    <fieldset>
+        <legend>Input Data</legend>
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        <input type="text" id="namaInput" placeholder="Nama">
+                    </td>
+                    <td>
+                        <input type="number" id="hargaInput" placeholder="Harga">
+                    </td>
+                    <td>
+                        <select id="kategoriInput">
+                            <option hidden value="">All</option>
+                            <option value="cepatSaji">Cepat Saji</option>
+                            <option value="pakaian">Pakaian</option>
+                            <option value="elektronik">Elektronik</option>
+                            <option value="buah">Buah</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" id="stockInput" placeholder="Stock">
+                    </td>
+                </tr>
+            </thead>
+        </table>
+        <br>
+    <button onclick="inputData()">Input</button><br>
+    </fieldset>
+    <fieldset>
+        <legend>Tabel Data</legend>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Kategori</th>
+                    <th>Nama</th>
+                    <th>Harga</th>
+                    <th>Stock</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tabelData">
+            </tbody>
+        </table>
+    </fieldset>
+</body>
+<script src="./filterTD.js"></script>
+</html>

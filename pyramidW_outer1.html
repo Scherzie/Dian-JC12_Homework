@@ -1,0 +1,27 @@
+<html>
+    <script>
+        var output=''
+        for(var i=0;i<5;i++){
+            for(var j=i;j<5;j++){
+                output+=' '
+            }
+            for(var k=0;k<i+1;k++){
+                if(k==0){
+                    output+='1'
+                }else{
+                    output+='*'
+                }
+            }
+            for(var e=1;e<(i+1);e++){
+                if(e==i){
+                    output+='1'
+                }
+                else{
+                    output+='*'
+                }
+            }
+            output+='\n'
+        }
+        console.log(output)
+    </script>
+</html>

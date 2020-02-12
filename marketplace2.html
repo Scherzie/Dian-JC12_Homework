@@ -1,0 +1,36 @@
+<html>
+    <script>
+        //update alert null
+        alert('Daftar Harga\nApel = 10000\nAnggur = 15000\nJeruk = 20000'
+        +'\n=======================================\nStock saat ini :\nApel = 5\nAnggur = 7\nJeruk=8')
+        var hargaApel=10000
+        var hargaAnggur=15000
+        var hargaJeruk=20000
+        var stockApel=5
+        var stockAnggur=7
+        var stockJeruk=8
+        var apel=prompt('Jumlah Apel yang ingin dibeli : ')
+        var anggur=prompt('Jumlah Anggur yang ingin dibeli : ')
+        var jeruk=prompt('Jumlah Jeruk yang ingin dibeli : ')
+        var total, bayar
+        if(apel<=0||anggur<=0||jeruk<=0){
+            alert('Maaf, anda belum memasukan data yang diperlukan')
+        }if(apel<=stockApel&&anggur<=stockAnggur&&jeruk<=stockJeruk){
+            total=(parseInt(apel*hargaApel)+(anggur*hargaAnggur)+(jeruk*hargaJeruk))
+            alert('Pembelian berhasil')
+            alert('Detail Belanja\n\nApel : '+(parseInt(apel))+' x '+hargaApel+' = '+(parseInt(apel))*hargaApel+
+            '\nAnggur : '+(parseInt(anggur))+' x '+hargaAnggur+' = '+(parseInt(anggur))*hargaAnggur+
+            '\nJeruk : '+(parseInt(jeruk))+' x '+hargaJeruk+' = '+(parseInt(jeruk))*hargaJeruk+
+            '\n\nTotal Tagihan = '+total)
+            bayar=prompt('Masukan uang anda')
+            if(bayar==total){
+                alert('Terima kasih telah berbelanja ^^')
+            }else if(bayar>total){
+                alert('Kembalian anda = '+(bayar-total))
+            }else if (bayar<total){
+                alert('Maaf, uang anda kurang = '+(total-bayar)+'\nSilahkan mencoba kembali')
+        }}else{
+            alert('Pembelian gagal, stock tidak memadai.\nSilahkan mencoba kembali')
+        }
+    </script>
+    </html>

@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Solve It! #10</title>
+    </head>
+    <body>
+        <form name="quiz" method="post" name="buttons" id="quiz" onsubmit="return false">
+        <h4>1. Siapakah Presiden ketiga Republik Indonesia?</h4>
+        <input type="radio" name="answer1" value="correct"> Prof.B.J.Habibie
+        <input type="radio" name="answer1" value="wrong"> Abdurrahman Wahid
+        <input type="radio" name="answer1" value="wrong"> Ir.Soekarno
+        <input type="radio" name="answer1" value="wrong"> Joko Widodo
+        <h4>2. Berikut adalah nama-nama bahasa pemrograman, kecuali...</h4>
+        <input type="radio" name="answer2" value="wrong"> Python
+        <input type="radio" name="answer2" value="correct"> Micro:bit
+        <input type="radio" name="answer2" value="wrong"> JavaScript
+        <input type="radio" name="answer2" value="wrong"> HTML
+        <h4>3. Apa judul lagu yang diduga diplagiat oleh lagu 'Sayang' Via Vallen?</h4>
+        <input type="radio" name="answer3" value="wrong"> Qing Fei De Yi
+        <input type="radio" name="answer3" value="wrong"> Ting Hai
+        <input type="radio" name="answer3" value="correct"> Mirai E Kiroro
+        <input type="radio" name="answer3" value="wrong"> Hau Siang Hau Siang
+        <h4>4.Siapakah sosok dibalik topeng Batman?</h4>
+        <input type="radio" name="answer4" value="wrong"> Natasha Romanov
+        <input type="radio" name="answer4" value="wrong"> Peter Parker
+        <input type="radio" name="answer4" value="wrong"> Tony Stark
+        <input type="radio" name="answer4" value="correct"> Bruce Wayne
+        </form>
+        <button class="submit" onclick="return submit();" type="submit">SUBMIT</button>
+        <h2 id="output"></h2>
+        <script>
+            function submit(){
+                var amountCorrect=0;          
+                for(var i=1;i<=4;i++) {
+                var radios = document.getElementsByName("answer"+i)
+                for(var j=0;j<radios.length;j++) {
+                    var radio=radios[j];
+                    if(radio.value=="correct"&&radio.checked) {
+                    amountCorrect+=25
+                    }
+                }
+                }                   
+                document.getElementById("output").innerHTML='Nilai akhir Anda '+amountCorrect
+            }
+        </script>
+    </body>
+</html>

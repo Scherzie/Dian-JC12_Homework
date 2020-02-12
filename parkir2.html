@@ -1,0 +1,69 @@
+<html>
+    <script>
+        do{
+            var kendaraan=parseInt(prompt('1.mobil\n2.motor'))
+            if(!(kendaraan>0&&kendaraan<3)){
+            alert('salah input kendaraan')
+            }
+        }while(!(kendaraan>0&&kendaraan<3));
+
+        var salahinput1=true
+        while(salahinput1){
+            var masuk=parseInt(prompt('masukan jam masuk (0-11)'))
+            if(masuk>=0&&masuk<12){
+                salahinput1=false
+            }else{
+                alert('salah input jam masuk')
+            }
+        }
+        do{
+            var kondisi1=parseInt(prompt('1.pm\n2.am'))
+            if(!(kondisi1>0&&kondisi1<3)){
+                alert('pilih am/pm jam masuk')
+            }
+        }while(!(kondisi1>0&&kondisi1<3));
+            
+        var salahinput2=true
+        while(salahinput2){
+            var keluar=parseInt(prompt('masukan jam keluar (0-11)'))
+            if(keluar>=0&&keluar<12){
+                salahinput2=false
+            }else{
+                alert('salah input jam keluar')
+            }
+        }do{
+            var kondisi2=parseInt(prompt('1.pm\n2.am'))
+            if(!(kondisi2>0&&kondisi2<3)){
+                alert('pilih am/pm jam keluar')
+            }
+        }while(!(kondisi2>0&&kondisi2<3));
+        var hargaperjam
+        if(kendaraan==1){
+            hargaperjam=2000
+        }else{
+            hargaperjam=1000
+        }
+        if(masuk>=keluar&&kondisi1==kondisi2){
+            keluar+=24
+        }else if(kondisi1!=kondisi2){
+            keluar+=12
+        }
+        var totaljam=keluar-masuk
+        var akhir
+        if(totaljam<=2){
+            if(kendaraan==1){
+                akhir=5000*totaljam
+            }else{
+                akhir=3000*totaljam
+            }
+        }else{
+            if(kendaraan==1){
+                akhir=((totaljam-2)*hargaperjam)+10000
+            }else{
+                akhir=((totaljam-2)*hargaperjam)+6000
+            }
+        }
+        alert('Struk Parkir\n=========================\nJenis kendaraan : '+kendaraan+
+    '\nLama parkir : '+totaljam+' jam\nTotal harga = Rp '+(akhir)+',-')
+    </script>
+</html>

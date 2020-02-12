@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form P&H</title>
+    <style>
+        fieldset,td,th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 20px;
+            margin: 0 auto;
+            text-align: center;   
+        }
+    </style> 
+</head>
+<body>
+    <table>
+        <thead>
+            <th>Form Produk</th>
+            <th>Form Hewan</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    Nama : <input type="text" id="namaProduk" placeholder=""><br>
+                    <br>Harga : <input type="number" id="hargaProduk" placeholder=""><br>
+                    <br>Kondisi : <input type="radio" name="kondisi">Baru
+                                  <input type="radio" name="kondisi">Second<br>
+                    <br>Kategori :
+                    <select id="kategori">
+                        <option hidden value="">pilih kategori ..</option>
+                        <option value="Cepat Saji">Cepat Saji</option>
+                        <option value="Pakaian">Pakaian</option>
+                        <option value="Elektronik">Elektronik</option>
+                        <option value="Buah">Buah</option>
+                    </select>
+                    <br><br>
+                    <button onclick="printProduk()">Tambahkan</button><br>
+                </td>
+                <td>
+                    Nama : <input type="text" id="namaHewan" placeholder=""><br>
+                    <br>Umur : <input type="number" id="umurHewan" placeholder=""><br>
+                    <br>Kelamin : <input type="radio" name="kelamin">Jantan
+                                  <input type="radio" name="kelamin">Betina<br>
+                    <br>Status : <input type="radio" name="status">Liar
+                                  <input type="radio" name="status">Peliharaan
+                    <br><br>
+                    <button onclick="printHewan()">Tambahkan</button><br>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+    <br>
+    <table>
+        <thead>
+            <th><br>Data Barang<br><br></th>
+            <th><br>Data Hewan<br><br></th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Nama</td>
+                                <td>Harga</td>
+                                <td>Kondisi</td>
+                                <td>Kategori</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="tambahProduk"></tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Nama</td>
+                                <td>Umur</td>
+                                <td>Kelamin</td>
+                                <td>Status</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="tambahHewan"></tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script src="./formPH.js">
+</script>
+</html>

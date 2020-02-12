@@ -1,0 +1,189 @@
+<html>
+    <script>
+        /* Tugas membuat Market Place yang isinya seperti berikut :
+            Menu Utama = "Apa yang ingin anda lakukan?"
+                        1. Menampilkan daftar produk
+                            Nama : ... | Stok : ... | Beda : ... | Harga : ...
+                        2. Menambah produk ~> Munculin kategori produk yang ingin ditambahkan 
+                            1. Cepat saji ~> Masukkan waktu expired
+                            2. Pakaian ~> Masukkan ukuran
+                            3. Elektronik ~> Masukkan status garansi
+                            4. Buah ~> Masukkan tingkat kandungan gula
+                                Yang di Looping di setiap menu :
+                                Masukkan nama produk,
+                                Masukan jumlah stock,
+                                "Beda tergantung item",
+                                Masukkan jumlah harga satuan,
+                                Munculin "Daftar Produk" semua barang
+                        3. Menghapus produk ~> Munculin daftar produk terus diapus sesuai pilihan
+                        4. Membeli produk ~> Munculin daftar produk terus pilih buat belanja dst
+                        5. Keluar ~> langsung exit */
+        
+        //Define Things~
+        var produk=[
+            {
+                kategori:'cepat saji',
+                nama:'Indomie',
+                stok:20,
+                exp:2020,
+                harga:2500
+            },
+            {
+                kategori:'pakaian',
+                nama:'Jeans',
+                stok:5,
+                ukuran:'L',
+                harga:80000
+            },
+            {
+                kategori:'elektronik',
+                nama:'Smart TV 32"',
+                stok:3,
+                garansi:2,
+                harga:2480000
+            },
+            {
+                kategori:'buah',
+                nama:'Alpukat',
+                stok:17,
+                sugar:'Rendah',
+                harga:20000
+            }
+        ]
+        function isiProduk(){
+            var output='Daftar Produk :\n\n'
+            produk.forEach((val,index)=>{
+                if(val.kategori==='cepat saji'){
+                    var prodProperties=' | Expired: '
+                    var prodValue=val.exp
+                }
+                else if(val.kategori==='pakaian'){
+                    var prodProperties=' | Ukuran: '
+                    var prodValue=val.ukuran
+                }
+                else if(val.kategori==='elektronik'){
+                    var prodProperties=' | Garansi: '
+                    var prodValue=val.garansi+' Tahun'
+                }
+                else if(val.kategori==='buah'){
+                    var prodProperties=' | Sugar Lvl: '
+                    var prodValue=val.sugar
+                }
+                output+=(index+1)+'. Nama: '+val.nama+'| Stok: '+val.stok+prodProperties+prodValue+
+                ' | Harga: Rp '+val.harga+'\n'
+            })
+           return output
+        }
+        class Keranjang{
+            constructor(nama,qty,beda,harga){
+                this.nama=nama,
+                this.qty=qty,
+                this.beda=beda,
+                this.harga=harga
+            }
+        }
+        var isiKeranjang=[]
+        function sumTotalHarga(){
+            var totalHarga=0
+            for(var i=0;i<isiKeranjang.length;i++){
+                totalHarga+=(isiKeranjang[i].harga)*(isiKeranjang[i].qty)
+            }return totalHarga
+        }
+        function printstruk(){
+            var strukBelanja='Struk Belanja :\n'
+            for(var i=0;i<isiKeranjang.length;i++){
+                strukBelanja+=(i+1)+'. '+(isiKeranjang[i].nama)+' = '+(isiKeranjang[i].qty)+' X IDR '
+                +(isiKeranjang[i].harga)+' = '+((isiKeranjang[i].qty)*(isiKeranjang[i].harga))+'\n'
+            }
+            strukBelanja+='================================= +\n'
+            strukBelanja+='Total Bill = IDR '+sumTotalHarga()
+            return strukBelanja
+        }
+        
+        //Start~
+        alert('Selamat datang di toko kami')
+        do{
+            do{
+                var menuUtama=prompt('Apa yang ingin anda lakukan?\n\n1. Daftar Produk\n'+
+                '2. Menambah Produk\n3. Menghapus Produk\n4. Membeli Produk\n5. Keluar')
+                if(menuUtama<1||menuUtama>5){
+                    alert('Salah input di menu utama, pilih : 1-5')
+                }
+            }while(menuUtama<1||menuUtama>5);
+            if(menuUtama==1){
+                alert(isiProduk())
+            }else if(menuUtama==2){
+                do{
+                    var menuTambah=prompt('Kategori produk yang ingin anda tambahkan :\n\n'+
+                    '1. Cepat Saji\n2. Pakaian\n3. Elektronik\n4. Buah')
+                    if(menuTambah<1||menuTambah>5){
+                        alert('Salah input di menu tambah produk, pilih : 1-4')
+                    }
+                }while(menuTambah<1||menuTambah>4)
+                    var tambahNama=prompt('Masukkan nama produk')
+                    var tambahStok=prompt('Masukkan jumlah stok?')
+                    var tambahHarga=prompt('Masukkan jumlah harga satuan?')
+                if(menuTambah==1){
+                    var tambahKategori='cepat saji'
+                    var tambahExp=prompt('Masukkan waktu expired?')
+                }else if(menuTambah==2){
+                    var tambahKategori='pakaian'
+                    var tambahUkuran=prompt('Masukkan ukuran?')
+                }else if(menuTambah==3){
+                    var tambahKategori='elektronik'
+                    var tambahGaransi=prompt('Masukkan lama garansi?')
+                }else if(menuTambah==4){
+                    var tambahKategori='buah'
+                    var tambahSugar=prompt('Masukkan kadar gula?')
+                }
+                produk.push({nama:tambahNama,stok:tambahStok,kategori:tambahKategori,exp:tambahExp,ukuran:tambahUkuran,garansi:tambahGaransi,sugar:tambahSugar,harga:tambahHarga})
+                alert(isiProduk())
+            }else if(menuUtama==3){
+                var hapusProduk=prompt(isiProduk())-1
+                var konfirmasiHapus=confirm('Apakah anda yakin ingin menghapus '+produk[{nama:hapusProduk}]+' dari list?')
+                if(konfirmasiHapus){
+                    produk.splice(hapusProduk,1)
+                    alert('Berhasil menghapus')
+                    alert(isiProduk())                                        
+                }else{
+                    alert('Anda berubah pikiran? Tidak jadi hapus nih..')
+                }
+            }else if(menuUtama==4){          
+                do{
+                    var pilihanbelanja=prompt(isiProduk())-1
+                    do{
+                        var qty=parseInt(prompt('Berapa banyak '+produk[pilihanbelanja].fruitList+' u want to buy?'))
+                        if(qty>produk[pilihanbelanja].stockList){
+                            alert('please re-input, insufficient stock')
+                        }else{
+                            produk[pilihanbelanja].stockList-=qty
+                            break
+                        }
+                    }while(true);
+                    var adadata=false
+                    var index=-1
+                    cartList.forEach((val,index1)=>{
+                        if(val.itemList===produk[pilihanbelanja].fruitList){
+                            adadata=true
+                            index=index1
+                        }
+                    })
+                    if(adadata){
+                        cartList[index].qtyList+=qty
+                    }else{
+                        cartList.push(new Cart(produk[pilihanbelanja].fruitList,qty,produk[pilihanbelanja].priceList))  
+                    }
+                    var shoppingconfirmation=confirm('shop again?')
+                }while(shoppingconfirmation)
+                alert(isiProduk('bill'))        
+            }else{
+                alert('thx for shopping at Scherzie Market, have a nice day~ ^^')
+                break
+            }
+            var konfirmasimenuutama=confirm('Kembali ke menu utama?')
+            if(!konfirmasimenuutama){
+                alert('Terimakasih telah mengunjungi toko kami')
+            }
+        }while(konfirmasimenuutama)
+    </script>
+</html>

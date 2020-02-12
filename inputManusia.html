@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Manusia</title>
+    <style>
+        .fieldset-auto-width {
+            display: inline-block;
+            }
+        table,td,th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+            table-layout: auto;
+            text-align:right;  
+        }
+    </style> 
+</head>
+<body>
+    <center>
+        <fieldset class="fieldset-auto-width" align="left">
+            <h1 align="center">Input Manusia</h1>
+            Nama : <input type="text" id="nama" placeholder=""><br><br>
+            Usia : <input type="number" id="usia" placeholder=""><br><br>
+            Gender : <input type="radio" name="gender">Pria
+                     <input type="radio" name="gender">Wanita<br><br>
+            Pekerjaan : <input type="text" id="pekerjaan" placeholder=""><br><br>
+            <button onclick="submit()">Submit</button><br>
+        </fieldset>
+        <br><br>
+        <button onclick="namaSort()">Nama</button>
+        <button onclick="usiaSort()">Usia</button>
+        <button onclick="genderSort()">Gender</button>
+        <button onclick="pekerjaanSort()">Pekerjaan</button>
+        <br><br>
+        <table>
+            <thead>
+                <tr>
+                    <td>No.</td>
+                    <td>Nama</td>
+                    <td>Usia</td>
+                    <td>Gender</td>
+                    <td>Pekerjaan</td>
+                </tr>
+            </thead>
+            <tbody id="printData"></tbody>
+        </table>   
+    </center>
+</body>
+<script>
+    //Define
+    class Manusia{
+        constructor(nama,usia,gender,pekerjaan){
+            this.nama=nama
+            this.usia=usia
+            this.gender=gender
+            this.pekerjaan=pekerjaan
+        }
+    }
+    var dataManusia=[
+        new Manusia('Zero',20,'Pria','Programmer'),
+        new Manusia('J.K. Rowling',35,'Wanita','Novelist'),
+        new Manusia('Phoenix',30,'Pria','Lawyer'),
+        new Manusia('Angelina Jollie',40,'Wanita','Actress')
+    ]
+    //Print
+    const printData=()=>{
+        var output=''
+        dataManusia.forEach((val,index)=>{
+            output+=`<tr>
+                        <td>${index+1}</td>
+                        <td>${val.nama}</td>
+                        <td>${val.usia}</td>
+                        <td>${val.gender}</td>
+                        <td>${val.pekerjaan}</td>
+                    </tr>`
+        })
+        document.getElementById('printData').innerHTML=output
+    }
+    printData()
+    //Submit
+    const submit=()=>{
+        var namaSubmit=document.getElementById('nama').value
+        var usiaSubmit=document.getElementById('usia').value
+        var genderSubmit=''
+        if(document.getElementsByName('gender')[0].checked){
+            genderSubmit='Pria'
+        }else{
+            genderSubmit='Wanita'
+        }
+        var pekerjaanSubmit=document.getElementById('pekerjaan').value
+        dataManusia.push(new Manusia(namaSubmit,usiaSubmit,genderSubmit,pekerjaanSubmit))
+        printData()
+    }
+    //Sort
+    const namaSort=()=>{
+        dataManusia.sort(function(a,b){
+            var x = a.nama.toLowerCase();
+            var y = b.nama.toLowerCase();
+            if(x<y){return -1}
+            if(x>y){return 1}
+            return 0
+        })
+        printData()
+    }
+    const usiaSort=()=>{
+        dataManusia.sort(function(a,b){
+            return a.usia-b.usia
+        })
+        printData()
+    }
+    const genderSort=()=>{
+        dataManusia.sort(function(a,b){
+            if(a.gender>b.gender){return -1}
+            if(a.gender<b.gender){return 1}
+            return 0
+        })
+        printData()
+    }
+    const pekerjaanSort=()=>{
+        dataManusia.sort(function(a,b){
+            var x = a.pekerjaan.toLowerCase();
+            var y = b.pekerjaan.toLowerCase();
+            if(x<y){return -1}
+            if(x>y){return 1}
+            return 0
+        })
+        printData()
+    }
+</script>
+</html>

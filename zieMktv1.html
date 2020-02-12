@@ -1,0 +1,117 @@
+<html>
+    <script>
+        //Define Things
+        class Data{
+            constructor(fruits, stock, price){
+                this.fruitList=fruits,
+                this.stockList=stock,
+                this.priceList=price
+            }
+        }
+        var listData=[
+            new Data('Apple',20,20000),
+            new Data('Grape',30,30000),
+            new Data('Blueberry',40,40000),
+            new Data('Banana',10,10000)
+        ]
+
+        class Cart{
+            constructor(item, qty, cPrice){
+                this.itemList=item,
+                this.qtyList=qty,
+                this.cPriceList=cPrice
+            }
+        }
+        var cartList=[]
+
+        function sumTotalPrice(){
+            var totalPrice=0
+            for(var i=0;i<cartList.length;i++){
+                totalPrice+=(cartList[i].cPriceList)*(cartList[i].qtyList)
+            }return totalPrice
+        }
+        function printdata(condition){
+            if(condition==='bill'){
+                var billpayment='Shopping Bill :\n'
+                for(var i=0;i<cartList.length;i++){
+                    billpayment+=(i+1)+'. '+(cartList[i].itemList)+' = '+(cartList[i].qtyList)+' X IDR '
+                    +(cartList[i].cPriceList)+' = '+((cartList[i].qtyList)*(cartList[i].cPriceList))+'\n'
+                }
+                billpayment+='================================= +\n'
+                billpayment+='Total Bill = IDR '+sumTotalPrice()
+                return billpayment
+            }else{
+                var output='Fruits List :\n'
+                for(var i=0;i<listData.length;i++){
+                    output+=(i+1)+'. '+listData[i].fruitList+'| stock : '+listData[i].stockList+'| price : IDR '+
+                    listData[i].priceList+'\n'
+                }return output
+            }
+        }
+
+        //Start
+        alert('Welcome to Scherzie Market')
+        do{
+            do{
+                var mainmenu=prompt('1. Fruits List\n2. Add Fruits\n3. Delete Fruits\n4. Shopping\n5. Exit')
+                if(mainmenu<1||mainmenu>5){
+                    alert('wrong input on main menu, pick : 1-4')
+                }
+            }while(mainmenu<1||mainmenu>5);
+            if(mainmenu==1){
+                alert(printdata())
+            }else if(mainmenu==2){
+                var addFruits=prompt('what is the name of the fruits?')
+                var totalFruits=prompt('how many?')
+                var fruitsPrice=prompt('how much is it in IDR?')
+                listData.push(new Data(addFruits,totalFruits,fruitsPrice))
+                alert(printdata())
+            }else if(mainmenu==3){
+                var deleteData=prompt(printdata())-1
+                var deleteConfirmation=confirm('do u really want to delete '+(listData[deleteData].fruitList)+' from list?')
+                if(deleteConfirmation){
+                    listData.splice(deleteData,1)
+                    alert('deleting success')
+                    alert(printdata())                                        
+                }else{
+                    alert('u change ur mind? u do not want to delete it huh?')
+                }
+            }else if(mainmenu==4){          
+                do{
+                    var shoppingchoice=prompt(printdata())-1
+                    do{
+                        var qty=parseInt(prompt('how many '+listData[shoppingchoice].fruitList+' u want to buy?'))
+                        if(qty>listData[shoppingchoice].stockList){
+                            alert('please re-input, insufficient stock')
+                        }else{
+                            listData[shoppingchoice].stockList-=qty
+                            break
+                        }
+                    }while(true);
+                    var adadata=false
+                    var index=-1
+                    for(var i=0;i<cartList.length;i++){
+                        if(cartList[i].itemList===listData[shoppingchoice].fruitList){
+                            adadata=true
+                            index=i
+                        }
+                    }
+                    if(adadata){
+                        cartList[index].qtyList+=qty
+                    }else{
+                        cartList.push(new Cart(listData[shoppingchoice].fruitList,qty,listData[shoppingchoice].priceList))  
+                    }
+                    var shoppingconfirmation=confirm('shop again?')
+                }while(shoppingconfirmation)
+                alert(printdata('bill'))        
+            }else{
+                alert('thx for shopping at Scherzie Market, have a nice day~ ^^')
+                break
+            }
+            var mainmenuconfirmation=confirm('back to main menu?')
+            if(!mainmenuconfirmation){
+                alert('thx for visiting Scherzie Market =D')
+            }
+        }while(mainmenuconfirmation);
+    </script>
+</html>

@@ -1,0 +1,43 @@
+<html>
+    <script>
+    var mobilmotor=prompt('Jenis kendaraan :\n\n1.Mobil\n2.Motor')
+    var masuk=parseInt(prompt('Jam masuk'))
+    var ampmin=prompt('Masuk :\n\n1.AM\n2.PM')
+    var keluar=parseInt(prompt('Jam keluar'))
+    var ampmout=prompt('Keluar :\n\n1.AM\n2.PM')
+    var harga, lamaparkir, kendaraan
+    if(mobilmotor==1){
+        kendaraan='Mobil'
+    }else if(mobilmotor==2){
+        kendaraan='Motor'
+    }
+    lamaparkir=keluar-masuk
+    if((lamaparkir==1&&ampmin==1&&ampmout==1)||(lamaparkir==1&&ampmin==2&&ampmout==2)){
+        harga=3000
+    }else if(lamaparkir==-11){
+        lamaparkir+=12
+        harga=3000
+    }else if((lamaparkir==2&&ampmin==1&&ampmout==2)||(lamaparkir==2&&ampmin==1&&ampmout==1)||(lamaparkir==2&&ampmin==2&&ampmout==2)){
+        harga=3000*2
+    }else if(lamaparkir==2&&ampmin==2&&ampmout==1){
+        lamaparkir+=12
+        harga=(3000*2)+((lamaparkir-2)*1000)
+    }else if((lamaparkir>2&&ampmin==1&&ampmout==2)||(lamaparkir>2&&ampmin==1&&ampmout==1)||(lamaparkir>2&&ampmin==2&&ampmout==2)){
+        harga=(3000*2)+((lamaparkir-2)*1000)
+    }else if(lamaparkir>2&&ampmin==2&&ampmout==1){
+        lamaparkir-=12
+        harga=(3000*2)+((lamaparkir-2)*1000)
+    }else if((lamaparkir==0&&ampmin==1&&ampmout==2)||(lamaparkir==0&&ampmin==2&&ampmout==1)){
+        lamaparkir+=12
+        harga=(3000*2)+((lamaparkir-2)*1000)
+    }else if((lamaparkir<0&&ampmin==1&&ampmout==2)||(lamaparkir<0&&ampmin==2&&ampmout==1)){
+        lamaparkir+=12
+        harga=(3000*2)+((lamaparkir-2)*1000)
+    }else if((lamaparkir==0&&ampmin==1&&ampmout==1)||(lamaparkir==0&&ampmin==2&&ampmout==2)){
+        lamaparkir+=24
+        harga=(3000*2)+((lamaparkir-2)*1000)
+    }
+    alert('Struk Parkir\n=========================\nJenis kendaraan : '+kendaraan+
+    '\nLama parkir : '+lamaparkir+' jam\nTotal harga = Rp '+(harga)+',-')
+    </script>
+</html>

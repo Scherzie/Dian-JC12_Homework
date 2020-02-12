@@ -1,0 +1,51 @@
+<html>
+    <script>
+        var hargaAnggur=5000
+        var hargaApel=10000
+        var hargaNanas=2000
+        var hargaDurian=30000
+        var stokAnggur=5
+        var stokApel=10
+        var stokNanas=20
+        var stokDurian=18
+        var anggur=0, apel=0, nanas=0, durian=0, total=0
+        var total, bayar
+    do{
+        alert('Stok buah saat ini :\n\nAnggur = 5\nApel = 10\nNanas = 20\nDurian = 18')
+        var listbelanja=parseInt(prompt('Mau belanja apa?\n1.anggur Rp 5.000\n2.apel Rp 10.000'
+        +'\n3.nanas Rp 2.000\n4.durian Rp 30.000'))
+        
+        if(listbelanja==1){
+            anggur=parseInt(prompt('Masukan jumlah Anggur yang ingin dibeli : '))
+        }else if(listbelanja==2){
+            apel=parseInt(prompt('Masukan jumlah Apel yang ingin dibeli : '))
+        }else if(listbelanja==3){
+            nanas=parseInt(prompt('Masukan jumlah Nanas yang ingin dibeli : '))
+        }else if(listbelanja==4){
+            durian=parseInt(prompt('Masukan jumlah Durian yang ingin dibeli : '))
+        }else if(listbelanja>4||listbelanja<=0){
+            alert('Maaf, anda belum memilih buah yang ingin dibeli')
+        }
+        if(anggur>stokAnggur||apel>stokApel||nanas>stokNanas||durian>stokDurian){
+            alert('Pembelian gagal, stock tidak memadai.\nSilahkan mencoba kembali')
+        }else{
+            total=(parseInt(anggur*hargaAnggur)+(apel*hargaApel)+(nanas*hargaNanas)+(durian*hargaDurian))
+            alert('Pembelian berhasil')
+            alert('Detail Belanja\n\nAnggur : '+(parseInt(anggur))+' x '+hargaAnggur+' = '+(parseInt(anggur))*hargaAnggur+
+            '\nApel : '+(parseInt(apel))+' x '+hargaApel+' = '+(parseInt(apel))*hargaApel+
+            '\nNanas : '+(parseInt(nanas))+' x '+hargaNanas+' = '+(parseInt(nanas))*hargaNanas+
+            '\nDurian : '+(parseInt(durian))+' x '+hargaDurian+' = '+(parseInt(durian))*hargaDurian+
+            '\n\nTotal Tagihan = '+total)
+            bayar=prompt('Masukan uang anda')
+            if(bayar==total){
+                alert('Terima kasih telah berbelanja ^^')
+            }else if(bayar>total){
+                alert('Kembalian anda = '+(bayar-total))
+            }else if (bayar<total){
+                alert('Maaf, uang anda kurang = '+(total-bayar)+'\nSilahkan mencoba kembali')
+            }
+        }
+    var con2=confirm('Anda mau berbelanja lagi?')
+    }while(con2)
+    </script>
+</html>

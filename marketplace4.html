@@ -1,0 +1,53 @@
+<html>
+    <script>
+    var menu=['zonk', 'info', 'add' , 'del', 'shop']
+    var fruits=['anggur', 'apel', 'nanas', 'durian']
+    var stock=[20, 15, 5, 10]
+    var price=[10000, 5000, 15000, 20000]
+    var output='Data Buah :\n'
+    var outputtambah='Data Buah :\n'
+    var outputkurang='Data Buah :\n'
+    do{
+    for (var i=0;i<fruits.length;i++) {
+        output+=(i+1)+'. '+fruits[i]+' | '+stock[i]+' | '+price[i]+'\n'
+    }
+    for (var x=i;x<fruits.length;x++) {
+    outputtambah+=(x+1)+'. '+fruits[x]+' | '+stock[x]+' | '+price[x]+'\n'
+    }
+    for (var y=i;y<fruits.length;y++) {
+    outputkurang+=(y+1)+'. '+fruits[y]+' | '+stock[x]+' | '+price[x]+'\n'
+    }
+        menu=prompt('1. Data Buah\n2. Tambah Buah\n3. Hapus Buah\n4. Beli Buah')
+        if(menu==1){
+            alert(output)
+        }else if(menu==2){
+            var tambahbuah=prompt('Masukan jenis buah')
+            fruits.push(tambahbuah)
+            var tambahstok=parseInt(prompt('Masukan jumlah buah'))
+            stock.push(tambahstok)
+            var tambahharga=parseInt(prompt('Masukan harga buah'))   
+            price.push(tambahharga)
+            alert(outputtambah)
+        }else if(menu==3){
+            var kurang=parseInt(prompt('Masukan urutan buah'))
+            fruits.splice([kurang])
+            alert(outputkurang)
+        }else if(menu==4){
+            fruits=prompt('Mau beli buah apa?')
+            do{
+                var buy=parseInt(prompt('Mau beli berapa buah?'))
+                if(buy>0&&buy<=stock){
+                    alert('Detail Belanja :\n\n'+fruits[i]+' : '+buy+' x '+price[i]+' = '+buy*price)
+                }else{
+                    alert('maaf stok tidak mencukupi, silahkan ulang')
+                }
+                var konfirmasiakhir=confirm('Mau belanja lagi?')
+            }while(konfirmasiakhir)
+        }else{
+            alert('salah input, pilihan menu hanya 1-4')
+        }
+        var konfirmasimenu=confirm('Kembali ke menu?')
+    }while(konfirmasimenu)
+    fruits.sort()&&stock.sort()&&price.sort()
+    </script>
+</html>

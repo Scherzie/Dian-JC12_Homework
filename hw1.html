@@ -1,0 +1,32 @@
+<html>
+    <script>
+        //Solve 4
+        var solve = 485
+        var tahun = 360
+        var bulan = 30
+        var minggu = 7
+        var year = Math.floor(solve / tahun)
+        solve = solve % tahun
+        var month = Math.floor(solve % tahun / bulan)
+        solve = solve % bulan
+        var week = Math.floor(solve % bulan / minggu)
+        solve = solve % minggu
+        var day = Math.floor(solve % minggu / 1)
+        solve = solve % 1
+        console.log(year + ' tahun, ' + month + ' bulan, ' + week + ' minggu, ' + day + ' hari')
+
+        //Solve5
+        var rasioandiperbudi = 0.4
+        var budi = (49/(rasioandiperbudi+1))
+        var andi = (49-budi)
+        console.log('Usia Andi 2 tahun lagi = '+(budi+2)+' thn, '+'Usia Budi 2 tahun lagi = '+(andi+2)+' thn')
+
+        //Solve8
+        var jarakAB = 120
+        var a = 60
+        var b = 40
+        var abStart = 9
+        var tabrakan = ((jarakAB/(a+b))*60%60)
+        console.log('waktu tabrakan = '+(abStart+Math.floor(jarakAB/(a+b)))+':'+tabrakan)
+    </script>
+</html>
