@@ -1,0 +1,109 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+:root{
+    --warnapinknya: crimson;
+    --color-bg: #0c1327;
+}
+div{
+    border: solid transparent 1px;
+}
+/* header -- start */
+.header-container{
+    display: flex;
+    padding: 0px 3%;
+    justify-content: space-between;
+    height: 70px;
+    background-color: var(--color-bg);
+    color: white;
+    font-family: 'Lato', sans-serif;
+}
+.headermenukiri{
+    flex-basis: 80%;
+    display: flex;
+}
+.brand{
+    width: 15%;
+    height: 70%;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.menukiri{
+    display: flex;
+    align-items: center;
+    flex-basis: 50%;
+    justify-content: space-around;
+}
+.font-icon{
+    font-size: 11px;
+}
+.headermenukanan{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+.getstarted{
+ border-radius: 20px;
+ width: 124px;
+ padding: 10px;
+ padding-left: 33px;
+ border: 1.5px solid var(--warnapinknya);
+ transition: 500ms;
+}
+.menukiri div:hover{
+    cursor: pointer;
+}
+.getstarted:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+}
+.color-primary{
+    color: var(--warnapinknya)
+}
+/* header -- end */
+
+/* jumbotron1 start */
+.jumbotron1-container{
+    font-family: 'Lato', sans-serif;
+    height: 100vh;
+    background-color: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 7%;
+}
+.text-besar{
+    color: white;
+    font-size: 50px;
+    font-weight: 900;
+    padding: 0px 15%;
+}
+.tombol{
+    background-color: var(--warnapinknya);
+    color: white;
+}
+.tombol-container{
+    padding: 10px 45%;
+}
+.text-sedang{
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 10px 20%;
+    font-weight: 50;
+    line-height: 38px;
+}
+.mobil{
+    position: absolute;
+    top: 80%;
+    left: 22%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.grafik{
+    position: absolute;
+    top: 102%;
+    left: 8%;
+}
